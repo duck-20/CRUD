@@ -1,0 +1,39 @@
+﻿@model List<ProductList>
+@{
+    ViewData["Title"] = "Display";
+    int count = 0;
+}
+ 
+@if (Model.Count>0){
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">S No.</th>
+            <th scope="col">ProductName</th>
+            <th scope="col">ProductDescription</th>
+            <th scope="col">ProductImage</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Rate</th>
+        </tr>
+        </thead>
+            <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@(count=count+1)</td>
+                    <td>@product.ProductName</td>
+                    <td>@product.ProductDescription</td>
+                    <td><img src="@product.ProductFile" class="img-thumbnail" /></td>
+                    <td>@product.Quantity</td>
+                    <td>@product.Rate</td>
+                </tr>
+            }
+
+    </tbody>
+</table>
+    }
+    else
+    {
+        <h1 class="text-center text-danger">No Items</h1>
+    }
+
